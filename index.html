@@ -68,13 +68,10 @@
       //   gameMessage.innerHTML = "Choose Rock (r), Paper (p), or Scissors (s).";
       if (userGuess === 'r' && randomCompChoice === 'r') {
         gameMessage.innerHTML = "You've tied! Chose again."
-        checkWinner();
       } else if (userGuess === 's' && randomCompChoice === 's') {
         gameMessage.innerHTML = "You've tied! Chose again."
-        checkWinner();
       } else if (userGuess === 'p' && randomCompChoice === 'p') {
         gameMessage.innerHTML = "You've tied! Chose again."
-        checkWinner();
       } else if (userGuess === 'r' && randomCompChoice === 's') {
         gameMessage.innerHTML = "You won! Play again."
         winsUser++;
@@ -100,6 +97,7 @@
         winsCpu++;
         checkWinner();
       }
+    // remove after functions created to increase wins
       userWins.innerHTML = winsUser;
       cpuWins.innerHTML = winsCpu;
     };

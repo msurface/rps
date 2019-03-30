@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 1</title>
+</head>
+
+<body>
+  <h1>Rock, Paper, Scissors</h1>
+  <div id="game">
+    <span id="message"></span>
+    <div id='user'>
+      <span id="user-wins"></span>
+      <span id="user-choice"></span>
+    </div>
+    <div id="cpu">
+      <span id="cpu-wins"></span>
+      <span id="cpu-choice"></span>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const compChoices = ['r', 'p', 's'];
+    let winsUser = 0;
+    let winsCpu = 0;
+    // Whenever a key is pressed, alert "pressed a button".
+    document.onkeyup = function(event) {
+      let userGuess = event.key;
+      console.log(userGuess);
+
+      const gameMessage = document.querySelector('#message');
+      const userWins = document.querySelector('#user-wins');
+      const userChoice = document.querySelector('#user-choice');
+      const cpuWins = document.querySelector('#cpu-wins');
+      const cpuChoice = document.querySelector('#cpu-choice');
+
+     let randomCompChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
+      console.log(randomCompChoice);
+
+      function checkWinner() {
+        if (winsUser === 10) {
+          gameMessage.innerHTML = "YOU WON!";
+          userWins.innerHTML = '';
+          cpuWins.innerHTML = '';
+          winsUser = 0;
+          winsCpu = 0;
+        } else if (winsCpu === 10) {
+          gameMessage.innerHTML = "YOU Lost!";
+          userWins.innerHTML = '';
+          cpuWins.innerHTML = '';
+          winsUser = 0;
+          winsCpu = 0;
+        } else {
+          return;
+        }
+      };
+
+      // create a userWins function
+
+      // create a cpuWins function
+
+      // add DOM manipulation for win user chooses rock to be a picture of a rock...
+
+      // try to find a scoreboard you can update -- old school hockey style scoreboard
+
+      // if (userGuess !== 'r' || userGuess != 's' || userGuess != 'p') {
+      //   gameMessage.innerHTML = "Choose Rock (r), Paper (p), or Scissors (s).";
+      if (userGuess === 'r' && randomCompChoice === 'r') {
+        gameMessage.innerHTML = "You've tied! Chose again."
+        checkWinner();
+      } else if (userGuess === 's' && randomCompChoice === 's') {
+        gameMessage.innerHTML = "You've tied! Chose again."
+        checkWinner();
+      } else if (userGuess === 'p' && randomCompChoice === 'p') {
+        gameMessage.innerHTML = "You've tied! Chose again."
+        checkWinner();
+      } else if (userGuess === 'r' && randomCompChoice === 's') {
+        gameMessage.innerHTML = "You won! Play again."
+        winsUser++;
+        checkWinner();
+      } else if (userGuess === 'r' && randomCompChoice === 'p') {
+        gameMessage.innerHTML = "You lost. Better luck next play!";
+        winsCpu++;
+        checkWinner();
+      } else if (userGuess === 's' && randomCompChoice === 'r') {
+        gameMessage.innerHTML = "You lost. Better luck next play!";
+        winsCpu++;
+        checkWinner();
+      } else if (userGuess === 's' && randomCompChoice === 'p') {
+        gameMessage.innerHTML = "You won! Play again.";
+        winsUser++;
+        checkWinner();
+      } else if (userGuess === 'p' && randomCompChoice === 'r') {
+        gameMessage.innerHTML = "You won! Play again."
+        winsUser++;
+        checkWinner();
+      } else if (userGuess === 'p' && randomCompChoice === 's') {
+        gameMessage.innerHTML = "You lost. Better luck next play!";
+        winsCpu++;
+        checkWinner();
+      }
+      userWins.innerHTML = winsUser;
+      cpuWins.innerHTML = winsCpu;
+    };
+  </script>
+
+</body>
+
+</html>

@@ -41,24 +41,43 @@
       function checkWinner() {
         if (winsUser === 10) {
           gameMessage.innerHTML = "YOU WON!";
-          userWins.innerHTML = '';
-          cpuWins.innerHTML = '';
           winsUser = 0;
           winsCpu = 0;
+          userWins.innerHTML = " ";
+          cpuWins.innerHTML = " ";
         } else if (winsCpu === 10) {
           gameMessage.innerHTML = "YOU Lost!";
-          userWins.innerHTML = '';
-          cpuWins.innerHTML = '';
           winsUser = 0;
           winsCpu = 0;
+          userWins.innerHTML = " ";
+          cpuWins.innerHTML = " ";
         } else {
           return;
         }
       };
 
       // create a userWins function
+        function increaseUserWins() {
+            gameMessage.innerHTML = "You won! Play again."
+            winsUser++;
+            userWins.innerHTML = winsUser;
+            cpuWins.innerHTML = winsCpu;
+        };
 
       // create a cpuWins function
+        function increaseCpuWins() {
+            gameMessage.innerHTML = "You lost. Better luck next play!";
+            winsCpu++;
+            cpuWins.innerHTML = winsCpu;
+            userWins.innerHTML = winsUser;
+        };
+
+        //   create a tied function
+        function tied() {
+            gameMessage.innerHTML = "You've tied! Chose again.";
+            userWins.innerHTML = winsUser;
+            cpuWins.innerHTML = winsCpu;
+        }
 
       // add DOM manipulation for win user chooses rock to be a picture of a rock...
 
@@ -67,40 +86,32 @@
       // if (userGuess !== 'r' || userGuess != 's' || userGuess != 'p') {
       //   gameMessage.innerHTML = "Choose Rock (r), Paper (p), or Scissors (s).";
       if (userGuess === 'r' && randomCompChoice === 'r') {
-        gameMessage.innerHTML = "You've tied! Chose again."
-      } else if (userGuess === 's' && randomCompChoice === 's') {
-        gameMessage.innerHTML = "You've tied! Chose again."
-      } else if (userGuess === 'p' && randomCompChoice === 'p') {
-        gameMessage.innerHTML = "You've tied! Chose again."
-      } else if (userGuess === 'r' && randomCompChoice === 's') {
-        gameMessage.innerHTML = "You won! Play again."
-        winsUser++;
-        checkWinner();
-      } else if (userGuess === 'r' && randomCompChoice === 'p') {
-        gameMessage.innerHTML = "You lost. Better luck next play!";
-        winsCpu++;
-        checkWinner();
-      } else if (userGuess === 's' && randomCompChoice === 'r') {
-        gameMessage.innerHTML = "You lost. Better luck next play!";
-        winsCpu++;
-        checkWinner();
-      } else if (userGuess === 's' && randomCompChoice === 'p') {
-        gameMessage.innerHTML = "You won! Play again.";
-        winsUser++;
-        checkWinner();
-      } else if (userGuess === 'p' && randomCompChoice === 'r') {
-        gameMessage.innerHTML = "You won! Play again."
-        winsUser++;
-        checkWinner();
-      } else if (userGuess === 'p' && randomCompChoice === 's') {
-        gameMessage.innerHTML = "You lost. Better luck next play!";
-        winsCpu++;
-        checkWinner();
-      }
-    // remove after functions created to increase wins
-      userWins.innerHTML = winsUser;
-      cpuWins.innerHTML = winsCpu;
+            tied();
+        } else if (userGuess === 's' && randomCompChoice === 's') {
+            tied();
+        } else if (userGuess === 'p' && randomCompChoice === 'p') {
+            tied();
+        } else if (userGuess === 'r' && randomCompChoice === 's') {
+            increaseUserWins()
+            checkWinner();
+        } else if (userGuess === 'r' && randomCompChoice === 'p') {
+            increaseCpuWins()
+            checkWinner();
+        } else if (userGuess === 's' && randomCompChoice === 'r') {
+            increaseCpuWins()
+            checkWinner();
+        } else if (userGuess === 's' && randomCompChoice === 'p') {
+            increaseUserWins()
+            checkWinner();
+        } else if (userGuess === 'p' && randomCompChoice === 'r') {
+            increaseUserWins()
+            checkWinner();
+        } else if (userGuess === 'p' && randomCompChoice === 's') {
+            increaseCpuWins()
+            checkWinner();
+        }
     };
+
   </script>
 
 </body>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors Part 1</title>
+  <title>Rock Paper Scissors</title>
 </head>
 
 <body>
@@ -22,95 +22,149 @@
 
   <script type="text/javascript">
     const compChoices = ['r', 'p', 's'];
-    let winsUser = 0;
-    let winsCpu = 0;
-    // Whenever a key is pressed, alert "pressed a button".
-    document.onkeyup = function(event) {
-      let userGuess = event.key;
-      console.log(userGuess);
+        let winsUser = 0;
+        let winsCpu = 0;
+        // Whenever a key is pressed, alert "pressed a button".
+        document.onkeyup = function (event) {
+            let userGuess = event.key;
+            console.log("user choice: " + userGuess);
 
-      const gameMessage = document.querySelector('#message');
-      const userWins = document.querySelector('#user-wins');
-      const userChoice = document.querySelector('#user-choice');
-      const cpuWins = document.querySelector('#cpu-wins');
-      const cpuChoice = document.querySelector('#cpu-choice');
+            const gameMessage = document.querySelector('#message');
+            const userWins = document.querySelector('#user-wins');
+            const userChoice = document.querySelector('#user-choice');
+            const cpuWins = document.querySelector('#cpu-wins');
+            const cpuChoice = document.querySelector('#cpu-choice');
 
-     let randomCompChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
-      console.log(randomCompChoice);
+            let randomCompChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
+            console.log('computer random choice: ' + randomCompChoice);
 
-      function checkWinner() {
-        if (winsUser === 10) {
-          gameMessage.innerHTML = "YOU WON!";
-          winsUser = 0;
-          winsCpu = 0;
-          userWins.innerHTML = " ";
-          cpuWins.innerHTML = " ";
-        } else if (winsCpu === 10) {
-          gameMessage.innerHTML = "YOU Lost!";
-          winsUser = 0;
-          winsCpu = 0;
-          userWins.innerHTML = " ";
-          cpuWins.innerHTML = " ";
-        } else {
-          return;
-        }
-      };
+            function checkWinner() {
+                if (winsUser === 10) {
+                    gameMessage.innerHTML = "YOU WON!";
+                    winsUser = 0;
+                    winsCpu = 0;
+                    userWins.innerHTML = " ";
+                    cpuWins.innerHTML = " ";
+                } else if (winsCpu === 10) {
+                    gameMessage.innerHTML = "YOU Lost!";
+                    winsUser = 0;
+                    winsCpu = 0;
+                    userWins.innerHTML = " ";
+                    cpuWins.innerHTML = " ";
+                } else {
+                    return;
+                }
+            };
 
-      // create a userWins function
-        function increaseUserWins() {
-            gameMessage.innerHTML = "You won! Play again."
-            winsUser++;
-            userWins.innerHTML = winsUser;
-            cpuWins.innerHTML = winsCpu;
+            // create a userWins function
+            function increaseUserWins() {
+                gameMessage.innerHTML = "You won! Play again."
+                winsUser++;
+                userWins.innerHTML = winsUser;
+                cpuWins.innerHTML = winsCpu;
+                userAvatar();
+                cpuAvatar();
+            };
+
+            // create a cpuWins function
+            function increaseCpuWins() {
+                gameMessage.innerHTML = "You lost. Better luck next play!";
+                winsCpu++;
+                cpuWins.innerHTML = winsCpu;
+                userWins.innerHTML = winsUser;
+                userAvatar();
+                cpuAvatar();
+            };
+
+            //   create a tied function
+            function tied() {
+                gameMessage.innerHTML = "You've tied! Chose again.";
+                userWins.innerHTML = winsUser;
+                cpuWins.innerHTML = winsCpu;
+                userAvatar();
+                cpuAvatar();
+            }
+            // Need to fix removeChild to remove the first
+            // add DOM manipulation for win user chooses rock to be a picture of a rock...
+            function userAvatar() {
+                let avatar = document.createElement('IMG');
+                if (userGuess === 'r') {
+                    avatar.setAttribute('src', 'assets/images/rock.jpg');
+                    avatar.setAttribute('width', '200');
+                    avatar.setAttribute('height', '200');
+                    userChoice.appendChild(avatar);
+
+                } else if (userGuess === 'p') {
+                    avatar.setAttribute('src', 'assets/images/paper.jpg');
+                    avatar.setAttribute('width', '200');
+                    avatar.setAttribute('height', '200');
+                    userChoice.appendChild(avatar);
+
+                } else if (userGuess === 's') {
+                    avatar.setAttribute('src', 'assets/images/scissors.jpg');
+                    avatar.setAttribute('width', '200');
+                    avatar.setAttribute('height', '200');
+                    userChoice.appendChild(avatar);
+                } else {
+                    return;
+                }
+            };
+
+            function cpuAvatar() {
+                let cpuAvatar = document.createElement('IMG');
+                if (randomCompChoice === 'r') {
+                    cpuAvatar.setAttribute('src', 'assets/images/rock.jpg');
+                    cpuAvatar.setAttribute('width', '200');
+                    cpuAvatar.setAttribute('height', '200');
+                    cpuChoice.appendChild(cpuAvatar);
+
+                } else if (randomCompChoice === 'p') {
+                    cpuAvatar.setAttribute('src', 'assets/images/paper.jpg');
+                    cpuAvatar.setAttribute('width', '200');
+                    cpuAvatar.setAttribute('height', '200');
+                    cpuChoice.appendChild(cpuAvatar);
+
+                } else if (randomCompChoice === 's') {
+                    cpuAvatar.setAttribute('src', 'assets/images/scissors.jpg');
+                    cpuAvatar.setAttribute('width', '200');
+                    cpuAvatar.setAttribute('height', '200');
+                    cpuChoice.appendChild(cpuAvatar);
+                } else {
+                    return;
+                }
+
+            };
+
+            // try to find a scoreboard you can update -- old school hockey style scoreboard
+
+            // if (userGuess !== 'r' || userGuess != 's' || userGuess != 'p') {
+            //   gameMessage.innerHTML = "Choose Rock (r), Paper (p), or Scissors (s).";
+            if (userGuess === 'r' && randomCompChoice === 'r') {
+                tied();
+            } else if (userGuess === 's' && randomCompChoice === 's') {
+                tied();
+            } else if (userGuess === 'p' && randomCompChoice === 'p') {
+                tied();
+            } else if (userGuess === 'r' && randomCompChoice === 's') {
+                increaseUserWins()
+                checkWinner();
+            } else if (userGuess === 'r' && randomCompChoice === 'p') {
+                increaseCpuWins()
+                checkWinner();
+            } else if (userGuess === 's' && randomCompChoice === 'r') {
+                increaseCpuWins()
+                checkWinner();
+            } else if (userGuess === 's' && randomCompChoice === 'p') {
+                increaseUserWins()
+                checkWinner();
+            } else if (userGuess === 'p' && randomCompChoice === 'r') {
+                increaseUserWins()
+                checkWinner();
+            } else if (userGuess === 'p' && randomCompChoice === 's') {
+                increaseCpuWins()
+                checkWinner();
+            }
         };
-
-      // create a cpuWins function
-        function increaseCpuWins() {
-            gameMessage.innerHTML = "You lost. Better luck next play!";
-            winsCpu++;
-            cpuWins.innerHTML = winsCpu;
-            userWins.innerHTML = winsUser;
-        };
-
-        //   create a tied function
-        function tied() {
-            gameMessage.innerHTML = "You've tied! Chose again.";
-            userWins.innerHTML = winsUser;
-            cpuWins.innerHTML = winsCpu;
-        }
-
-      // add DOM manipulation for win user chooses rock to be a picture of a rock...
-
-      // try to find a scoreboard you can update -- old school hockey style scoreboard
-
-      // if (userGuess !== 'r' || userGuess != 's' || userGuess != 'p') {
-      //   gameMessage.innerHTML = "Choose Rock (r), Paper (p), or Scissors (s).";
-      if (userGuess === 'r' && randomCompChoice === 'r') {
-            tied();
-        } else if (userGuess === 's' && randomCompChoice === 's') {
-            tied();
-        } else if (userGuess === 'p' && randomCompChoice === 'p') {
-            tied();
-        } else if (userGuess === 'r' && randomCompChoice === 's') {
-            increaseUserWins()
-            checkWinner();
-        } else if (userGuess === 'r' && randomCompChoice === 'p') {
-            increaseCpuWins()
-            checkWinner();
-        } else if (userGuess === 's' && randomCompChoice === 'r') {
-            increaseCpuWins()
-            checkWinner();
-        } else if (userGuess === 's' && randomCompChoice === 'p') {
-            increaseUserWins()
-            checkWinner();
-        } else if (userGuess === 'p' && randomCompChoice === 'r') {
-            increaseUserWins()
-            checkWinner();
-        } else if (userGuess === 'p' && randomCompChoice === 's') {
-            increaseCpuWins()
-            checkWinner();
-        }
-    };
 
   </script>
 

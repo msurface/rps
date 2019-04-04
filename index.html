@@ -21,9 +21,11 @@
   </div>
 
   <script type="text/javascript">
-    const compChoices = ['r', 'p', 's'];
+        const compChoices = ['r', 'p', 's'];
         let winsUser = 0;
         let winsCpu = 0;
+        let avatarTally = 0;
+
         // Whenever a key is pressed, alert "pressed a button".
         document.onkeyup = function (event) {
             let userGuess = event.key;
@@ -38,6 +40,7 @@
             let randomCompChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
             console.log('computer random choice: ' + randomCompChoice);
 
+            // function to check if there is a winner of the game
             function checkWinner() {
                 if (winsUser === 10) {
                     gameMessage.innerHTML = "YOU WON!";
@@ -45,12 +48,14 @@
                     winsCpu = 0;
                     userWins.innerHTML = " ";
                     cpuWins.innerHTML = " ";
+                    removeAvatar();
                 } else if (winsCpu === 10) {
                     gameMessage.innerHTML = "YOU Lost!";
                     winsUser = 0;
                     winsCpu = 0;
                     userWins.innerHTML = " ";
                     cpuWins.innerHTML = " ";
+                    removeAvatar();
                 } else {
                     return;
                 }
@@ -84,7 +89,7 @@
                 userAvatar();
                 cpuAvatar();
             }
-            // Need to fix removeChild to remove the first
+
             // add DOM manipulation for win user chooses rock to be a picture of a rock...
             function userAvatar() {
                 let avatar = document.createElement('IMG');
@@ -93,23 +98,31 @@
                     avatar.setAttribute('width', '200');
                     avatar.setAttribute('height', '200');
                     userChoice.appendChild(avatar);
+                    avatarTally++;
+                    removeFirstAvatar();
 
                 } else if (userGuess === 'p') {
                     avatar.setAttribute('src', 'assets/images/paper.jpg');
                     avatar.setAttribute('width', '200');
                     avatar.setAttribute('height', '200');
                     userChoice.appendChild(avatar);
+                    avatarTally++;
+                    removeFirstAvatar();
 
                 } else if (userGuess === 's') {
                     avatar.setAttribute('src', 'assets/images/scissors.jpg');
                     avatar.setAttribute('width', '200');
                     avatar.setAttribute('height', '200');
                     userChoice.appendChild(avatar);
+                    avatarTally++;
+                    removeFirstAvatar();
+
                 } else {
                     return;
                 }
             };
 
+            // DOM Manipulation to add rock, paper, scissors for CPU choice
             function cpuAvatar() {
                 let cpuAvatar = document.createElement('IMG');
                 if (randomCompChoice === 'r') {
@@ -133,6 +146,26 @@
                     return;
                 }
 
+            };
+
+            // function to remove the rock, paper, scissors avatar
+            function removeAvatar() {
+                const userAvatarList = document.getElementById(`user-choice`);
+                const cpuAvatarList = document.getElementById('cpu-choice');
+                userAvatarList.removeChild(userAvatarList.childNodes[0]);
+                cpuAvatarList.removeChild(cpuAvatarList.childNodes[0]);
+            };
+
+            // function to remove the previous avatar of the current played.
+            // starts after the firsst image
+            function removeFirstAvatar() {
+                console.log('avatarTally is: ' + avatarTally);
+                if (avatarTally < 2) {
+                    console.log('AvatarTally is less than 2');
+                    return;
+                } else if (avatarTally => 2) {
+                    removeAvatar();
+                }
             };
 
             // try to find a scoreboard you can update -- old school hockey style scoreboard

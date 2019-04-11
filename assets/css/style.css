@@ -86,6 +86,7 @@ h1 {
     height: 200px;
     width: 200px;
     border: 2px solid red;
+    border-radius: 25px;
     position: absolute;
     top: 26%;
     left: 46%;
@@ -107,6 +108,7 @@ h1 {
     height: 200px;
     width: 200px;
     border: 2px solid red;
+    border-radius: 25px;
     position: absolute;
     top: 26%;
     left: 79%;

@@ -9,8 +9,9 @@
 </head>
 
 <body>
-  <h1>Rock, Paper, Scissors</h1>
-  <div id="game">
+  <div class="parent">
+    <img src="assets/images/background.jpeg" >
+    <h1>Rock, Paper, Scissors</h1>
     <span id="message"></span>
     <div id='user'>
       <span id="user-wins"></span>
@@ -20,6 +21,7 @@
       <span id="cpu-wins"></span>
       <span id="cpu-choice"></span>
     </div>
+    
   </div>
 
   <script type="text/javascript">
@@ -67,8 +69,8 @@
             function increaseUserWins() {
                 gameMessage.innerHTML = "You won! Play again."
                 winsUser++;
-                userWins.innerHTML = winsUser;
-                cpuWins.innerHTML = winsCpu;
+                userWins.innerHTML = `Your Score: ${winsUser}`;
+                cpuWins.innerHTML = `Their Score: ${winsCpu}`;
                 userAvatar();
                 cpuAvatar();
             };
@@ -77,8 +79,8 @@
             function increaseCpuWins() {
                 gameMessage.innerHTML = "You lost. Better luck next play!";
                 winsCpu++;
-                cpuWins.innerHTML = winsCpu;
-                userWins.innerHTML = winsUser;
+                cpuWins.innerHTML = `Their Score: ${winsCpu}`;
+                userWins.innerHTML = `Your Score: ${winsUser}`;
                 userAvatar();
                 cpuAvatar();
             };
@@ -86,8 +88,8 @@
             //   create a tied function
             function tied() {
                 gameMessage.innerHTML = "You've tied! Chose again.";
-                userWins.innerHTML = winsUser;
-                cpuWins.innerHTML = winsCpu;
+                userWins.innerHTML = `Your Score: ${winsUser}`;
+                cpuWins.innerHTML = `Their Score: ${winsCpu}`;
                 userAvatar();
                 cpuAvatar();
             }

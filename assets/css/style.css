@@ -64,7 +64,7 @@ h1 {
 }
 
 #message {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     position: absolute;
     top: 10%;
     left: 60%;
@@ -76,7 +76,7 @@ h1 {
 
 
 #user-wins {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     padding: 5px;
     position: absolute;
     top: 20%;
@@ -89,7 +89,7 @@ h1 {
 #user-choice img {
     height: 200px;
     width: 200px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     border-radius: 25px;
     position: absolute;
     top: 26%;
@@ -99,7 +99,7 @@ h1 {
 }
 
 #cpu-wins {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     padding: 5px;
     height: 35px;
     width: 150px;
@@ -114,7 +114,7 @@ h1 {
 #cpu-choice img {
     height: 200px;
     width: 200px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     border-radius: 25px;
     position: absolute;
     top: 26%;

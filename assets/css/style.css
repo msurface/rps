@@ -50,7 +50,6 @@ h1 {
     left: 5%;
     z-index: 3;
     color: rgb(0, 0, 0);
-    text-shadow: .5px .5px rgb(201p, 252, 205);
     font-size: 300%;
 
 }
@@ -76,6 +75,7 @@ h1 {
     padding: 5px;
     transform: rotateY(-35deg);
     font-size: 180%;
+    z-index: 0;
 }
 
 
@@ -84,10 +84,11 @@ h1 {
     padding: 5px;
     position: absolute;
     top: 20%;
-    left: 48%;
+    left: 50%;
     height: 35px;
     width: 150px;
     transform: rotateY(-35deg);
+    z-index: 0;
 }
 
 #user-choice img {
@@ -97,7 +98,7 @@ h1 {
     border-radius: 25px;
     position: absolute;
     top: 26%;
-    left: 46%;
+    left: 48%;
     z-index: 0;
     transform: rotateY(-35deg);
 }
@@ -108,8 +109,7 @@ h1 {
     height: 35px;
     width: 150px;
     position: absolute;
-    top: 0;
-    left: 81%;
+    left: 77%;
     top: 18%;
     z-index: 2;
     transform: rotateY(-35deg) ;
@@ -122,10 +122,147 @@ h1 {
     border-radius: 25px;
     position: absolute;
     top: 24%;
-    left: 79%;
+    left: 75%;
     z-index: 2;
     transform: rotateY(-35deg);
 }
 
 /* Media Queries */
 
+@media (max-width: 1680px) {
+
+    h1 {
+        width: 600px;
+        left: 4.5%;
+        font-size: 270%;
+    
+    }
+
+}
+
+@media (max-width: 1440px) {
+    
+    h1 {
+        height: 55px;
+        width: 600px;
+        left: 3%;
+        font-size: 250%;
+    
+    }
+
+    #message {
+        /* border: 2px solid red; */
+        top: 9.5%;
+        left: 54%;
+        font-size: 155%;
+    }
+    
+    
+    #user-wins {
+        /* border: 2px solid red; */
+        left: 51%;
+    }
+    
+    #user-choice img {
+        height: 160px;
+        width: 160px;
+        /* border: 2px solid red; */
+        left: 50%;
+    }
+    
+    #cpu-wins {
+        /* border: 2px solid red; */
+        left: 74%;
+    }
+    
+    #cpu-choice img {
+        height: 180px;
+        width: 160px;
+        /* border: 2px solid red; */
+        left: 73%;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    
+    h1 {
+        width: 400px;
+        left: 2.5%;
+        font-size: 175%;
+    
+    }
+
+    #message {
+        /* border: 2px solid red; */
+        font-size: 130%;
+    }
+    
+    
+    #user-wins {
+        /* border: 2px solid red; */
+        padding: 5px;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        font-size: 95%;
+    }
+    
+    #user-choice img {
+        height: 150px;
+        width: 150px;
+        /* border: 2px solid red; */
+        top: 26%;
+        left: 49%;
+    }
+    
+    #cpu-wins {
+        /* border: 2px solid red; */
+        left: 75%;
+        top: 18%;
+        font-size: 95%;
+    }
+    
+    #cpu-choice img {
+        height: 160px;
+        width: 150px;
+        /* border: 2px solid red; */
+        top: 24%;
+        left: 74%;
+    }
+}
+
+/* can't get these two media queries to work */
+/* Need a little more time to figure it out */
+@media (max-width: 375px) {
+    
+    h1 {
+        border: 2px solid red;
+        margin: 0;
+        padding: 5px;
+        height: 55px;
+        width: 1000px;
+        position: absolute;
+        top: 8%;
+        left: 2%;
+        font-size: 100%;
+        color: #fff;
+    
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        border: 2px solid red;
+        margin: 0;
+        padding: 5px;
+        height: 55px;
+        width: 1000px;
+        position: absolute;
+        top: 8%;
+        left: 2%;
+        font-size: 100%;
+        color: #fff;
+    
+    }
+}
